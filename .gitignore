@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.py[cod]
+
+backtests_*/
+models/
+processed/
+
+*_predictions.csv
+predictions.csv
+
+.streamlit/
+.DS_Store
