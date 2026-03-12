@@ -1,8 +1,6 @@
 import io
 import json
-import tempfile
 from datetime import datetime
-from math import log
 from pathlib import Path
 
 import joblib
@@ -10,8 +8,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-from src.dixon_coles import DixonColesModel, artifact_from_model, model_from_artifact
-from src.ingest import build_master_dataset
+from src.dixon_coles import DixonColesModel, model_from_artifact
 
 
 APP_VERSION = "1.1.0"
@@ -75,15 +72,6 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-
-
-def _save_uploaded_files(uploaded_files, tmpdir: Path) -> list[Path]:
-    paths: list[Path] = []
-    for uf in uploaded_files:
-        p = tmpdir / uf.name
-        p.write_bytes(uf.getbuffer())
-        paths.append(p)
-    return paths
 
 
 def _read_table(uploaded_file) -> pd.DataFrame:
@@ -280,6 +268,13 @@ available = []
 if models_dir.exists():
     available = sorted({p.stem for p in models_dir.glob("*.joblib")})
 
+if not available:
+    st.sidebar.info(
+        "No bundled model artifacts were found in models/. On a hosted deployment, "
+        "this usually means the repo was deployed without tracked .joblib files. "
+        "You can still use single-league prediction by uploading a model artifact below."
+    )
+
 div = st.sidebar.selectbox("Division (league_id)", [""] + available)
 artifact = None
 artifact_path = None
@@ -335,6 +330,8 @@ tab_single, tab_batch, tab_multi, tab_help = st.tabs(["Single Prediction", "Batc
 with tab_single:
     if not artifact:
         st.info("Load a single league artifact from the sidebar to use single-match prediction.")
+        if not available:
+            st.caption("Deployment note: no local artifacts were found in models/, so upload a .joblib model in the sidebar to use this tab.")
     else:
         st.success(f"Loaded league: {league_id}  |  teams: {len(teams)}")
         if teams_current:
@@ -368,6 +365,8 @@ with tab_single:
 with tab_batch:
     if not artifact:
         st.info("Load a single league artifact from the sidebar to use the one-league batch predictor.")
+        if not available:
+            st.caption("Deployment note: if your hosted app does not include models/, upload a .joblib artifact in the sidebar first.")
     else:
         st.subheader("Batch prediction from file")
         fx_file = st.file_uploader("Upload fixtures CSV/XLSX", type=["csv", "xlsx", "xls"], accept_multiple_files=False)
@@ -418,6 +417,12 @@ with tab_batch:
 with tab_multi:
     st.subheader("Multi-league batch prediction")
     st.caption("Use a fixtures file with a league column such as Div. Each row will be matched to models/<league_id>.joblib.")
+    if not available:
+        st.warning(
+            "Multi-league mode requires bundled artifacts in models/ on the deployed app. "
+            "This mode will not run until the deployment includes files like models/E0.joblib, "
+            "models/E1.joblib, and other required league artifacts."
+        )
     multi_file = st.file_uploader(
         "Upload multi-league fixtures CSV/XLSX",
         type=["csv", "xlsx", "xls"],
@@ -533,6 +538,12 @@ For uploaded prediction files, the app accepts `.csv`, `.xlsx`, and `.xls`.
 - `Div`: required only for multi-league files; must match the target artifact league id
 
 Extra columns are allowed and will be ignored for prediction.
+
+### Deployment note
+
+- Single-match and one-league batch prediction can run on a hosted app if you upload a `.joblib` artifact in the sidebar.
+- Multi-league batch prediction requires the deployment itself to include the `models/` directory with one artifact per league.
+- If your deployed app shows no divisions in the sidebar, it means no bundled artifacts were shipped with the app.
 
 You do **not** need to provide any market odds; the model only uses team
 names and (optionally) expected‑goals data baked into the artifact.

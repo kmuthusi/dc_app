@@ -201,6 +201,18 @@ Features:
 - automatic restriction of single-match team dropdowns to the latest season when `processed/master_matches.*` is available,
 - automatic use of `backtests_threshold_sweep/best_exp_thresholds_all.json` when present so `exp_outcome` can use league-specific draw thresholds in the multi-league tab.
 
+### Deployment note
+
+If you deploy the app from this repository exactly as committed, the hosted app will
+start, but it will not have bundled league artifacts because `models/` is ignored in git.
+
+- single-match and one-league batch prediction still work if the user uploads a `.joblib` artifact in the sidebar,
+- multi-league batch prediction requires the deployment to include `models/<league_id>.joblib` files,
+- if the deployed sidebar shows no divisions, that means no local artifacts were shipped with the app.
+
+If you want full hosted functionality without manual artifact upload, you need to publish
+the required model files with the deployment or download them from a separate storage location at runtime.
+
 ## Backtesting and Performance Measurement
 
 Use `backtest_models.py` to measure out-of-sample model quality.
