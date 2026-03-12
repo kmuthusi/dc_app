@@ -223,7 +223,12 @@ Features:
 
 Use `backtest_models.py` to measure out-of-sample model quality.
 
-Example:
+By default the script will evaluate *all* leagues present in the unified
+master dataset.  You can restrict it to a single league by passing
+`--league-id E0` (or any other league code).  Omitting `--league-id` is the
+same as performing an "all-leagues" backtest.
+
+Example (single league):
 
 ```bash
 python backtest_models.py `
