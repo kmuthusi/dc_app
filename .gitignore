@@ -5,8 +5,11 @@ __pycache__/
 backtests_*/
 models/
 processed/
+data/
 
 *_predictions.csv
+*-predictions.csv
+*-predictions-*.csv
 predictions.csv
 
 .streamlit/

@@ -1,0 +1,38 @@
+Div,Date,Time,HomeTeam,AwayTeam,B365H,B365D,B365A
+E0,3/14/2026,14:00,Burnley,Bournemouth,4.2,3.7,1.83
+E0,3/14/2026,14:00,Sunderland,Brighton,3.3,3.4,2.2
+E0,3/14/2026,16:30,Arsenal,Everton,1.36,4.33,9.5
+E0,3/14/2026,16:30,Chelsea,Newcastle,1.8,4.2,3.8
+E0,3/14/2026,18:00,West Ham,Man City,4.5,4.5,1.66
+E0,3/15/2026,18:00,Crystal Palace,Leeds,2.3,3.4,3
+E0,3/15/2026,18:00,Man United,Aston Villa,1.72,3.8,4.33
+E0,3/15/2026,18:00,Nott'm Forest,Fulham,2.15,3.5,3.3
+E0,3/15/2026,18:00,Liverpool,Tottenham,1.33,5,8.5
+E0,3/15/2026,18:00,Brentford,Wolves,1.53,3.9,6
+E1,3/10/2026,18:00,Leicester,Bristol City,2.2,3.5,3
+E1,3/10/2026,18:00,Millwall,Derby,2,3.25,3.6
+E1,3/10/2026,18:00,Portsmouth,Swansea,2.15,3.3,3.25
+E1,3/10/2026,18:00,Sheffield Weds,Watford,7,4.33,1.42
+E1,3/10/2026,18:00,Wrexham,Hull,1.9,3.5,3.7
+E1,3/10/2026,18:00,Stoke,Ipswich,4.5,3.75,1.66
+E1,3/11/2026,18:00,Birmingham,QPR,1.69,3.75,4.5
+E1,3/11/2026,18:00,Middlesbrough,Charlton,1.35,4.75,7.5
+E1,3/11/2026,18:00,Norwich,Sheffield United,2.5,3.5,2.55
+E1,3/11/2026,18:00,Oxford,Blackburn,2.65,3.2,2.65
+E1,3/11/2026,18:00,West Brom,Southampton,2.7,3.5,2.35
+E1,3/11/2026,18:00,Coventry,Preston,1.42,4.75,6
+SC0,3/14/2026,18:00,Aberdeen,Falkirk,2.87,3.4,2.3
+SC0,3/14/2026,18:00,Celtic,Motherwell,1.62,3.9,5
+SC0,3/14/2026,18:00,Hibernian,Livingston,1.37,4.33,7
+SC0,3/14/2026,18:00,Kilmarnock,Hearts,4.75,3.6,1.66
+SC0,3/15/2026,18:00,St Mirren,Rangers,5,3.9,1.61
+SC0,3/15/2026,18:00,Dundee,Dundee United,2.1,3.4,3.1
+D1,3/13/2026,18:00,M'gladbach,St Pauli,1.95,3.25,4
+D1,3/14/2026,18:00,Leverkusen,Bayern Munich,4.75,4.2,1.6
+D1,3/14/2026,18:00,Dortmund,Augsburg,1.4,4.33,7
+D1,3/14/2026,18:00,Ein Frankfurt,Heidenheim,1.5,4.2,5.75
+D1,3/14/2026,18:00,Hoffenheim,Wolfsburg,1.48,4.5,5.75
+D1,3/14/2026,18:00,Hamburg,FC Koln,2,3.5,3.4
+D1,3/15/2026,18:00,Werder Bremen,Mainz,2.2,3.4,3
+D1,3/15/2026,18:00,Freiburg,Union Berlin,2.15,3.2,3.4
+D1,3/15/2026,18:00,Stuttgart,RB Leipzig,2.2,3.9,2.7
