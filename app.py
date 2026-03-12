@@ -499,6 +499,41 @@ with tab_help:
     **Multi-League Batch** tab for one file containing rows from multiple leagues.
     Follow the on-screen prompts for column names and options.
 
+### Required prediction file structure
+
+For uploaded prediction files, the app accepts `.csv`, `.xlsx`, and `.xls`.
+
+**One-league batch file**
+
+- Required fields: one home-team column and one away-team column
+- Recommended column names: `HomeTeam`, `AwayTeam`
+- Example:
+
+| HomeTeam | AwayTeam |
+| --- | --- |
+| Arsenal | Chelsea |
+| Liverpool | Everton |
+
+**Multi-league batch file**
+
+- Required fields: one league column, one home-team column, and one away-team column
+- Recommended column names: `Div`, `HomeTeam`, `AwayTeam`
+- The league values must match artifact names in `models/`, for example `E0`, `E1`, `D1`, `SC0`
+- Example:
+
+| Div | HomeTeam | AwayTeam |
+| --- | --- | --- |
+| E0 | Arsenal | Chelsea |
+| SC0 | Celtic | Rangers |
+
+### Required fields
+
+- `HomeTeam`: home team name exactly as used in the trained league artifact
+- `AwayTeam`: away team name exactly as used in the trained league artifact
+- `Div`: required only for multi-league files; must match the target artifact league id
+
+Extra columns are allowed and will be ignored for prediction.
+
 You do **not** need to provide any market odds; the model only uses team
 names and (optionally) expected‑goals data baked into the artifact.
 

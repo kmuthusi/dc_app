@@ -89,6 +89,19 @@ python predict_matches.py `
 
 The fixtures file can be CSV or Excel. The predictor only requires team-name columns.
 
+Required fields for a one-league prediction file:
+
+- one home-team column such as `HomeTeam`
+- one away-team column such as `AwayTeam`
+
+Minimal example:
+
+```csv
+HomeTeam,AwayTeam
+Arsenal,Chelsea
+Liverpool,Everton
+```
+
 You do not need to provide market odds to make predictions.
 
 ### Mixed-league batch prediction
@@ -115,6 +128,37 @@ How this works:
 - if `--threshold-map` is supplied, `exp_outcome` uses the best stored draw threshold for that league.
 
 This is the recommended path when your batch contains leagues such as `E0`, `E1`, `D1`, and `SP1` in the same file.
+
+Required fields for a multi-league prediction file:
+
+- one league column such as `Div`
+- one home-team column such as `HomeTeam`
+- one away-team column such as `AwayTeam`
+
+The `Div` values must match artifact names in `models/`, such as `E0`, `E1`, `D1`, or `SC0`.
+
+Minimal example:
+
+```csv
+Div,HomeTeam,AwayTeam
+E0,Arsenal,Chelsea
+SC0,Celtic,Rangers
+```
+
+Extra columns are allowed in either file type and will be ignored unless you explicitly map them in the UI.
+
+### Sample fixtures
+
+The repository includes a few small fixture files in the project root so you can
+test prediction flows quickly without preparing your own input first:
+
+- `fixtures.csv`: simple one-league example
+- `fixtures_test.csv`: mixed-league batch example
+- `D1-fixtures.csv`, `E1-fixtures.csv`, `SC0-fixtures.csv`, `sp_fixtures.csv`: league-specific examples
+
+These are kept in the repo root for now to match the existing command examples.
+If the project grows, they can be moved later into an `examples/` or
+`sample_data/` folder with the README commands updated accordingly.
 
 ### Prediction output columns
 
