@@ -3,12 +3,7 @@ __pycache__/
 *.py[cod]
 
 backtests_*/
-models/
-processed/
-data/
 
-*_predictions.csv
-*-predictions.csv
 *-predictions-*.csv
 predictions.csv
 
