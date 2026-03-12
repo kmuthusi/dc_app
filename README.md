@@ -104,6 +104,11 @@ Liverpool,Everton
 
 You do not need to provide market odds to make predictions.
 
+> **Disclaimer:** The predictions produced by this tool are intended for
+> educational and exploratory purposes only.  Football results are inherently
+> unpredictable.  Treat any wagering or financial exposure resulting from
+> these forecasts as your own responsibility.
+
 ### Mixed-league batch prediction
 
 If one fixtures file contains matches from multiple leagues, include a league column
