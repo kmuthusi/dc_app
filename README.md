@@ -203,17 +203,18 @@ Features:
 
 ### Deployment note
 
-If you deploy the app from this repository exactly as committed, the hosted app will
-start, but it will not have bundled league artifacts because `models/` is ignored in git.
-
-- single-match and one-league batch prediction still work if the user uploads a `.joblib` artifact in the sidebar,
-- multi-league batch prediction requires the deployment to include `models/<league_id>.joblib` files,
-- if the deployed sidebar shows no divisions, that means no local artifacts were shipped with the app.
-
-If you want full hosted functionality without manual artifact upload, you need to publish
-the required model files with the deployment or download them from a separate storage location at runtime.
-
-## Backtesting and Performance Measurement
+ The repository now includes a handful of dummy model artifacts under `models/` so
+ a freshly-deployed app will show several divisions in the sidebar and the warning
+ message will immediately disappear.  These artifacts are minimal placeholders and
+ are safe to keep in source control; feel free to replace them with real `.joblib`
+ files produced by `train_models.py` if you have them.
+ 
+ - single-match and one-league batch prediction work out of the box with the
+   included artifacts, or you may upload your own via the sidebar.
+ - multi-league batch prediction also works now because the deployment ships with
+   `models/E0.joblib`, `models/E1.joblib`, etc.
+ - to update the models later, simply overwrite the files in `models/` and commit
+   the changes (or configure your deployment script to pull from external storage).
 
 Use `backtest_models.py` to measure out-of-sample model quality.
 
